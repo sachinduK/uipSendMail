@@ -13,7 +13,7 @@
     <x:Property Name="in_strName" Type="InArgument(x:String)" />
     <x:Property Name="in_listAttachments" Type="InArgument(scg:List(x:String))" />
     <x:Property Name="in_saveMail" Type="InArgument(x:Boolean)" />
-    <x:Property Name="in_attachementPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_attachementPath" Type="InArgument(s:String[])" />
     <x:Property Name="in_filesList" Type="InArgument(s:String[])" />
     <x:Property Name="in_strSaveLocation" Type="InArgument(x:String)" />
     <x:Property Name="in_strFileName" Type="InArgument(x:String)" />
@@ -22,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>566,1108</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>566,1148</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>sendEmail_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -50,7 +50,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="16">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -67,6 +67,9 @@
       <AssemblyReference>System.Xaml</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="This is a common Componenet to send an email. This accept all the relevent parameters to send the mail. Save the sent email if wand is also facilitated" DisplayName="sendEmail" sap:VirtualizedContainerService.HintSize="526,1028" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -89,9 +92,9 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke getAttachments workflow" sap:VirtualizedContainerService.HintSize="464,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="getAttachments.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_attachementsPath">[in_attachementPath]</InArgument>
               <InArgument x:TypeArguments="s:String[]" x:Key="in_filesList">[in_filesList]</InArgument>
               <InArgument x:TypeArguments="scg:List(x:String)" x:Key="out_attachmentsList">[list_attachments]</InArgument>
+              <InArgument x:TypeArguments="s:String[]" x:Key="in_attachementsPaths">[in_attachementPath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke sendEmail workflow" sap:VirtualizedContainerService.HintSize="464,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="sendEmail.xaml">

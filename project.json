@@ -3,9 +3,7 @@
   "description": "Blank Project",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.6.0]",
     "UiPath.Mail.Activities": "[1.5.0]",
-    "UiPath.MicrosoftOffice365.Activities": "[0.2.0]",
     "UiPath.System.Activities": "[18.3.6897.22524]",
     "UiPath.UIAutomation.Activities": "[18.3.6897.22543]"
   },
@@ -21,6 +19,7 @@
     ]
   },
   "projectType": "Workflow",
+  "expressionLanguage": "VisualBasic",
   "libraryOptions": {
     "includeOriginalXaml": false,
     "privateWorkflows": []
